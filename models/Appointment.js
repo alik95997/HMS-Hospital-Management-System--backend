@@ -1,9 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import User from "./User.js";
+import Patient from "./Patient.js";
+import Doctor from "./Doctor.js";
 
 const appointmentsSchema = new mongoose.Schema({
-  doctorId: { type: Schema.Types.ObjectId, ref: User },
-  patientId: { type: Schema.Types.ObjectId, ref: User },
+  doctorId: { type: Schema.Types.ObjectId, ref: Doctor },
+  patientId: { type: Schema.Types.ObjectId, ref: Patient },
   date: Date,
 });
 const Appointments = mongoose.model("appointment", appointmentsSchema);

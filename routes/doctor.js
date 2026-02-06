@@ -1,16 +1,13 @@
 import express from "express";
-import User from "../models/User.js";
+import {
+  getAllDoctors,
+  getOneDoctor,
+  createDoctor,
+} from "../controllers/doctor.js";
 const router = express.Router();
 
-router.get("/doctors", async (req, res) => {
-  try {
-    const resDoctor = await User.find({ role: "doctor" });
-    res.status(201).json({
-      message: "fetched All Doctors",
-      resDoctor,
-    });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+router.route("/").get(getAllDoctors).post(createDoctor);
+
+router.get("/:id", getOneDoctor);
+
 export default router;

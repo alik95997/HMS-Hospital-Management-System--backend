@@ -1,10 +1,9 @@
 import express from "express";
-import User from "../models/User.js";
+import User from "../models/Patient.js";
 import { signup, login } from "../controllers/auth.js";
 const router = express.Router();
 
 //create user
-router.post("/create-user", signup);
 router.post("/login", login);
 
 //get user
